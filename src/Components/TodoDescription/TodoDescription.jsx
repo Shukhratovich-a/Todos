@@ -1,7 +1,7 @@
 import "./TodoDescription.scss";
 
 function TodoDescription() {
-  const todoText = "Sunnat";
+  const todoText = "Lorem ipsum dolor sit amet";
   return (
     <>
       <label className="todo__label" name="edit-todo" htmlFor="todo-input">
