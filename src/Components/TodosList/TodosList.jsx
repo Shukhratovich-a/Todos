@@ -4,6 +4,7 @@ function TodosList() {
   return (
     <ul className="todos__list">
       <Todo />
+      <Todo />
     </ul>
   );
 }
