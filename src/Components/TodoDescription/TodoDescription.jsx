@@ -1,10 +1,11 @@
 import "./TodoDescription.scss";
 
 function TodoDescription() {
+  const todoText = "Sunnat";
   return (
     <>
       <label className="todo__label" name="edit-todo" htmlFor="todo-input">
-        Todo text
+        {todoText}
       </label>
 
       <input
@@ -12,7 +13,7 @@ function TodoDescription() {
         name="edit-todo"
         type="text"
         id="todo-input"
-        value="Todo text"
+        defaultValue={todoText}
       />
     </>
   );

@@ -5,7 +5,8 @@ import "./App.scss";
 function App() {
   return (
     <>
-      <Todos />
+      <h1 className="todos__heading">todos</h1>
+      <Todos hasTodo={true} />
     </>
   );
 }
