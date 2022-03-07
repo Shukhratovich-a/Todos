@@ -1,4 +1,25 @@
-.todos__bottom{
+.todos__bottom {
+  position: relative;
+  display: none;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 550px;
+    height: 20px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 20%), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgb(0 0 0 / 20%),
+      0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgb(0 0 0 / 20%);
+  }
+}
+
+.todos--active {
+  .todos__bottom {
+    display: block;
+  }
+}
+
+.todos__bottom__inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -7,7 +28,12 @@
   border-top: 1px solid #e6e6e6;
 }
 
-.todos__bottom__list{
+.todos__bottom__text{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.todos__bottom__list {
   display: flex;
   align-items: center;
 }

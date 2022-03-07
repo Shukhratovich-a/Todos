@@ -13,4 +13,10 @@
   & + & {
     margin-left: 10px;
   }
+
+  &[name="clear-completed"] {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

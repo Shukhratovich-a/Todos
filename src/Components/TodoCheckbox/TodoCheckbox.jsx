@@ -1,9 +1,16 @@
+import React from "react";
 import "./TodoCheckbox.scss";
 
-function TodoCheckbox() {
+function TodoCheckbox({ todo, handleCheck }) {
   return (
     <label className="todo__checkbox">
-      <input className="todo__checkbox__input visually-hidden" type="checkbox" />
+      <input
+        className="todo__checkbox__input visually-hidden"
+        type="checkbox"
+        onClick={handleCheck}
+        data-todo-id={todo.id}
+        checked={todo.isCompleted}
+      />
       <span className="todo__checkbox__controller"></span>
     </label>
   );

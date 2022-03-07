@@ -28,6 +28,7 @@
   left: 10px;
   bottom: 50%;
   transform: translateY(50%) rotate(90deg);
+  display: none;
   width: 40px;
   height: 40px;
   background-color: transparent;
@@ -36,5 +37,15 @@
   &::before {
     content: "❯";
     font-size: 22px;
+  }
+
+  &--checkall{
+    opacity: 0.8;
+  }
+}
+
+.todos--active {
+  .todos__button {
+    display: block;
   }
 }
