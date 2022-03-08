@@ -6,7 +6,7 @@
   border: 1px solid transparent;
   border-radius: 3px;
 
-  &--active {
+  &--active:not([name="clear-completed"]) {
     border-color: rgba(175, 47, 47, 0.2);
   }
 
@@ -15,8 +15,16 @@
   }
 
   &[name="clear-completed"] {
+    opacity: 0;
+    pointer-events: none;
+
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  &.todos__bottom__button--visible {
+    opacity: 1;
+    pointer-events: all;
   }
 }

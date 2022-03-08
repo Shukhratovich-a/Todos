@@ -53,9 +53,16 @@ function Todos() {
           checkAll={checkAll}
           countCompletedTodos={countCompletedTodos}
         />
-        <TodosList todos={todos} handleDelete={handleDelete} handleCheck={handleCheck} />
-        <TodosBottom countCompletedTodos={countCompletedTodos} />
+        <TodosList
+          todos={todos}
+          setTodos={setTodos}
+          handleDelete={handleDelete}
+          handleCheck={handleCheck}
+        />
+        <TodosBottom countCompletedTodos={countCompletedTodos} todos={todos} setTodos={setTodos} />
       </div>
+
+      <span></span>
     </section>
   );
 }

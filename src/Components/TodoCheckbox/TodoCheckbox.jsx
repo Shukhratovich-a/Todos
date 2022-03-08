@@ -9,7 +9,7 @@ function TodoCheckbox({ todo, handleCheck }) {
         type="checkbox"
         onClick={handleCheck}
         data-todo-id={todo.id}
-        checked={todo.isCompleted}
+        defaultChecked={todo.isCompleted}
       />
       <span className="todo__checkbox__controller"></span>
     </label>

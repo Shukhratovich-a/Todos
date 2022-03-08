@@ -1,9 +1,8 @@
-import TodosFilterButton from "../TodosFilterButton/TodosFilterButton";
+import { TodosFilterButton, TodosClearButton } from "../TodosButton/TodosButton";
 
 import "./TodosBottom.scss";
 
-function TodosBottom({ countCompletedTodos }) {
-  let count = 0;
+function TodosBottom({ countCompletedTodos, todos, setTodos }) {
   return (
     <div className="todos__bottom">
       <div className="todos__bottom__inner">
@@ -23,7 +22,12 @@ function TodosBottom({ countCompletedTodos }) {
           </li>
         </ul>
 
-        <TodosFilterButton text="Clear completed" isActive={false} />
+        <TodosClearButton
+          text="Clear completed"
+          countCompletedTodos={countCompletedTodos}
+          todos={todos}
+          setTodos={setTodos}
+        />
       </div>
     </div>
   );
