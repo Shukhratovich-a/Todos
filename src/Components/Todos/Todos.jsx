@@ -62,7 +62,10 @@ function Todos() {
         <TodosBottom countCompletedTodos={countCompletedTodos} todos={todos} setTodos={setTodos} />
       </div>
 
-      <span></span>
+      <p className="todos__text">Double-click to edit a todo</p>
+      <p className="todos__text">
+        Created by <a href="https://github.com/Shukhratovich-a/todos-react">Shukhratovich</a>
+      </p>
     </section>
   );
 }
