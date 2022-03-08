@@ -64,7 +64,10 @@ function Todos() {
 
       <p className="todos__text">Double-click to edit a todo</p>
       <p className="todos__text">
-        Created by <a href="https://github.com/Shukhratovich-a/todos-react">Shukhratovich</a>
+        Created by{" "}
+        <a href="https://github.com/Shukhratovich-a/todos-react" target="blank">
+          Shukhratovich
+        </a>
       </p>
     </section>
   );

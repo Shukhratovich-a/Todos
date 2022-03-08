@@ -1,14 +1,24 @@
 import PropTypes from "prop-types";
 import "./TodosButton.scss";
 
-function TodosFilterButton({ text = "All", isActive = true, todos }) {
+function TodosFilterButton({ text = "All", isActive, buttons, setActive }) {
   const editText = text.toLowerCase().split(" ").join("-");
+
+  const filterTodos = (evt) => {
+    buttons.forEach((button) => {
+      if (button.buttonTitle.toLowerCase() === evt.target.name) button.isActive = true;
+      else button.isActive = false;
+    });
+
+    setActive([...buttons]);
+  };
 
   return (
     <button
       className={`todos__bottom__button ${isActive ? "todos__bottom__button--active" : ""}`}
       type="button"
       name={editText}
+      onClick={filterTodos}
     >
       {text}
     </button>
