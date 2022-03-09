@@ -11,6 +11,7 @@ function TodosForm({ todos, setTodos, checkAll, countCompletedTodos }) {
         isCompleted: false,
       };
 
+      localStorage.setItem("todos", JSON.stringify([...todos, newTodo]));
       setTodos([...todos, newTodo]);
 
       evt.target.value = null;

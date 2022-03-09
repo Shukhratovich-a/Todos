@@ -1,13 +1,22 @@
 import PropTypes from "prop-types";
 import "./TodosButton.scss";
 
-function TodosFilterButton({ text = "All", isActive, buttons, setActive }) {
+function TodosFilterButton({
+  text = "All",
+  isActive,
+  buttons,
+  setActive,
+  setButtonType,
+}) {
   const editText = text.toLowerCase().split(" ").join("-");
 
   const filterTodos = (evt) => {
     buttons.forEach((button) => {
-      if (button.buttonTitle.toLowerCase() === evt.target.name) button.isActive = true;
-      else button.isActive = false;
+      if (button.buttonTitle.toLowerCase() === evt.target.name) {
+        button.isActive = true;
+        setButtonType(evt.target.name);
+        console.log();
+      } else button.isActive = false;
     });
 
     setActive([...buttons]);
@@ -30,6 +39,9 @@ function TodosClearButton({ text = "clear-completed", countCompletedTodos, todos
 
   const clearCompleted = () => {
     const unCompletedTodos = todos.filter((todo) => !todo.isCompleted);
+
+    localStorage.setItem("todos", JSON.stringify(unCompletedTodos));
+
     setTodos(unCompletedTodos);
   };
 

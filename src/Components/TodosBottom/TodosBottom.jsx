@@ -3,7 +3,7 @@ import { TodosFilterButton, TodosClearButton } from "../TodosButton/TodosButton"
 
 import "./TodosBottom.scss";
 
-function TodosBottom({ countCompletedTodos, todos, setTodos }) {
+function TodosBottom({ countCompletedTodos, todos, setTodos, setButtonType }) {
   let [buttons, setActive] = React.useState([
     { buttonTitle: "All", isActive: true },
     { buttonTitle: "Active", isActive: false },
@@ -23,20 +23,10 @@ function TodosBottom({ countCompletedTodos, todos, setTodos }) {
                 isActive={button.isActive}
                 buttons={buttons}
                 setActive={setActive}
+                setButtonType={setButtonType}
               />
             </li>
           ))}
-          {/* <li className="todos__bottom__item">
-            <TodosFilterButton text="All" isActive={isActive} setActive={setActive} />
-          </li>
-
-          <li className="todos__bottom__item">
-            <TodosFilterButton text="Active" isActive={isActive} setActive={setActive} />
-          </li>
-
-          <li className="todos__bottom__item">
-            <TodosFilterButton text="Completed" isActive={isActive} setActive={setActive} />
-          </li> */}
         </ul>
 
         <TodosClearButton

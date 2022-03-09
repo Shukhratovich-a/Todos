@@ -9,6 +9,7 @@ function TodoDescription({ todo, todos, setTodos, isActive, setActive }) {
     if (evt.code === "Enter") {
       setActive(false);
       todo.title = evt.target.value.trim();
+      localStorage.setItem("todos", JSON.stringify([...todos]));
       setTodos([...todos]);
     }
   };

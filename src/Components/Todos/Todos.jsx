@@ -9,15 +9,17 @@ import "./Todos.scss";
 
 function Todos() {
   let [todos, setTodos] = React.useState(
-    !window.localStorage.todos ? [] : JSON.parse(window.localStorage.getItem("todos"))
+    window.localStorage ? JSON.parse(window.localStorage.getItem("todos")) : []
   );
 
-  localStorage.setItem("todos", JSON.stringify(todos));
+  const [buttonType, setButtonType] = React.useState("all");
 
   const handleDelete = (evt) => {
     const todoId = evt.target.dataset.todoId - 0;
 
     const filteredTodos = todos.filter((todo) => todo.id !== todoId);
+
+    localStorage.setItem("todos", JSON.stringify(filteredTodos));
 
     setTodos(filteredTodos);
   };
@@ -28,6 +30,7 @@ function Todos() {
     const foundTodo = todos.find((todo) => todo.id === todoId);
 
     foundTodo.isCompleted = !foundTodo.isCompleted;
+    localStorage.setItem("todos", JSON.stringify([...todos]));
 
     setTodos([...todos]);
   };
@@ -39,7 +42,21 @@ function Todos() {
       todos.forEach((todo) => (todo.isCompleted = true));
     }
 
+    localStorage.setItem("todos", JSON.stringify([...todos]));
+
     setTodos([...todos]);
+  };
+
+  const filterTodosByType = (_todos, _type) => {
+    if (_type === "all") {
+      return todos;
+    } else if (_type === "active") {
+      return todos.filter((todo) => !todo.isCompleted);
+    } else if (_type === "completed") {
+      return todos.filter((todo) => todo.isCompleted);
+    } else {
+      return [];
+    }
   };
 
   const countCompletedTodos = todos.filter((todo) => todo.isCompleted).length;
@@ -58,8 +75,15 @@ function Todos() {
           setTodos={setTodos}
           handleDelete={handleDelete}
           handleCheck={handleCheck}
+          buttonType={buttonType}
+          filterTodosByType={filterTodosByType}
         />
-        <TodosBottom countCompletedTodos={countCompletedTodos} todos={todos} setTodos={setTodos} />
+        <TodosBottom
+          countCompletedTodos={countCompletedTodos}
+          todos={todos}
+          setTodos={setTodos}
+          setButtonType={setButtonType}
+        />
       </div>
 
       <p className="todos__text">Double-click to edit a todo</p>
