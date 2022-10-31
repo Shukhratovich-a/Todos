@@ -47,18 +47,6 @@ function Todos() {
     setTodos([...todos]);
   };
 
-  const filterTodosByType = (_todos, _type) => {
-    if (_type === "all") {
-      return todos;
-    } else if (_type === "active") {
-      return todos.filter((todo) => !todo.isCompleted);
-    } else if (_type === "completed") {
-      return todos.filter((todo) => todo.isCompleted);
-    } else {
-      return [];
-    }
-  };
-
   React.useEffect(() => {
     const filterTodosByType = (_todos, _type) => {
       if (_type === "all") {
