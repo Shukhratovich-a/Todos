@@ -9,7 +9,7 @@ import "./Todos.scss";
 
 function Todos() {
   let [todos, setTodos] = React.useState(
-    window.localStorage ? JSON.parse(window.localStorage.getItem("todos")) : []
+    window.localStorage.getItem("todos") ? JSON.parse(window.localStorage.getItem("todos")) : []
   );
 
   const [buttonType, setButtonType] = React.useState("all");
@@ -59,6 +59,22 @@ function Todos() {
     }
   };
 
+  React.useEffect(() => {
+    const filterTodosByType = (_todos, _type) => {
+      if (_type === "all") {
+        return todos;
+      } else if (_type === "active") {
+        return todos.filter((todo) => !todo.isCompleted);
+      } else if (_type === "completed") {
+        return todos.filter((todo) => todo.isCompleted);
+      } else {
+        return [];
+      }
+    };
+
+    setTodos(filterTodosByType(todos, buttonType));
+  }, [buttonType, todos]);
+
   const countCompletedTodos = todos.filter((todo) => todo.isCompleted).length;
 
   return (
@@ -76,7 +92,6 @@ function Todos() {
           handleDelete={handleDelete}
           handleCheck={handleCheck}
           buttonType={buttonType}
-          filterTodosByType={filterTodosByType}
         />
         <TodosBottom
           countCompletedTodos={countCompletedTodos}

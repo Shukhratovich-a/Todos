@@ -1,10 +1,10 @@
 import Todo from "../Todo/Todo";
 
-function TodosList({ todos, setTodos, handleDelete, handleCheck, buttonType, filterTodosByType }) {
+function TodosList({ todos, setTodos, handleDelete, handleCheck }) {
   return (
     <ul className="todos__list">
       {todos.length > 0 &&
-        filterTodosByType(todos, buttonType).map((todo) => (
+        todos.map((todo) => (
           <Todo
             key={todo.id}
             todos={todos}
